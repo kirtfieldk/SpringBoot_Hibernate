@@ -1,7 +1,11 @@
 package com.homes.demo;
 
+import com.homes.demo.Database.Database;
+import com.homes.demo.home.Home;
+import com.homes.demo.neighborhood.Neighborhood;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,13 +27,11 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		SessionFactory factory = new Configuration().configure()
-				.addAnnotatedClass(Test.class).buildSessionFactory();
-		Session session = factory.getCurrentSession();
+				.buildSessionFactory();
+		Database db = new Database(factory);
 		try{
-			Test keith = new Test("Keith","Kirtfield",10);
-			session.beginTransaction();
-			session.save(keith);
-			session.getTransaction().commit();
+			System.out.println("Hello");
+//			SpringApplication.run(DemoApplication.class, args);
 		}catch(Exception e){
 			System.out.println(e);
 		}
