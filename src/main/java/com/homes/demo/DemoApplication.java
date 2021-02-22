@@ -28,9 +28,8 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 
-		SessionFactory factory = new Configuration().configure()
-				.buildSessionFactory();
-		Database db = new Database(factory);
+
+		Database db = new Database();
 		try{
 //			SpringApplication.run(DemoApplication.class, args);
 			Neighborhood n = new Neighborhood(2222,"Keith");

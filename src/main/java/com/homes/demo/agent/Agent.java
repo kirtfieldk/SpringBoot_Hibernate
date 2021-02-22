@@ -4,7 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.homes.demo.neighborhood.Neighborhood;
 
 import javax.persistence.*;
-
+/*
+    Agent object -> the powerhouse // Once logged in can
+    create, edit, and delete listings
+ */
 @Entity
 @Table(name = "agent")
 public class Agent {
@@ -19,16 +22,34 @@ public class Agent {
     @OneToOne
     @JoinColumn(name="neighborhood")
     private Neighborhood neighborhood;
-
+    @Column(name="username")
+    private String username;
     public Agent(
+            @JsonProperty("username") String username,
              @JsonProperty("name") String name,
              @JsonProperty("agency") String agency,
              @JsonProperty("neighborhood") Neighborhood neighborhood,
              @JsonProperty("id") int id) {
         this.name = name;
+        this.username=username;
         this.agency = agency;
         this.id = id;
         this.neighborhood = neighborhood;
+    }
+    public Agent(
+             String username, String name, String agency, Neighborhood neighborhood) {
+        this.name = name;
+        this.username=username;
+        this.agency = agency;
+        this.id = id;
+        this.neighborhood = neighborhood;
+    }
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getId() {

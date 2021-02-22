@@ -3,14 +3,16 @@ package com.homes.demo.Database;
 import com.homes.demo.school.School;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
 public class Database<T> {
     private SessionFactory factory;
     private Session session;
-    public Database(SessionFactory factory){
-        this.factory=factory;
+    public Database(){
+        this.factory = new Configuration().configure()
+                .buildSessionFactory();
     }
     public SessionFactory getFactory() {
         return factory;

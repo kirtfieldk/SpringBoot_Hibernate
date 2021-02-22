@@ -31,15 +31,45 @@ public class Home {
     @OneToOne
     @JoinColumn(name="school")
     private School school;
+
+    @Column(name="description")
+    private String description;
     public Home(){}
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Home(
+                 String address,
+                 int floors,
+                 int sqFt,
+                 Neighborhood neborhood,
+                 School school,
+                 int price,
+                 String description) {
+        this.description = description;
+        this.address = address;
+        this.school=school;
+        this.floors = floors;
+        this.sqFt = sqFt;
+        this.price=price;
+        this.neborhood = neborhood;
+    }
     public Home(@JsonProperty("id") int id,
                 @JsonProperty("address") String address,
                 @JsonProperty("floors") int floors,
                 @JsonProperty("sq_foot") int sqFt,
                 @JsonProperty("neborhood") Neighborhood neborhood,
                 @JsonProperty("School") School school,
-                @JsonProperty("price") int price) {
+                @JsonProperty("price") int price,
+                @JsonProperty("description") String description) {
         this.id = id;
+        this.description = description;
         this.address = address;
         this.school=school;
         this.floors = floors;
