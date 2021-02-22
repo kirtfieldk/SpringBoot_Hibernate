@@ -26,12 +26,15 @@ import java.sql.DriverManager;
 public class DemoApplication {
 
 	public static void main(String[] args) {
+
 		SessionFactory factory = new Configuration().configure()
 				.buildSessionFactory();
 		Database db = new Database(factory);
 		try{
 			System.out.println("Hello");
 //			SpringApplication.run(DemoApplication.class, args);
+			Neighborhood n = new Neighborhood(2222,"Keith");
+			db.addObject(n);
 		}catch(Exception e){
 			System.out.println(e);
 		}

@@ -8,7 +8,7 @@
 
         <!-- Connection settings -->
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/keith</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">mysecretpassword</property>
         <property name="hibernate.current_session_context_class">thread</property>
@@ -22,6 +22,9 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Annotated entity classes -->
-
+        <mapping class="com.homes.demo.neighborhood.Neighborhood"/>
+        <mapping class="com.homes.demo.school.School"/>
+        <mapping class="com.homes.demo.agent.Agent"/>
+        <mapping class="com.homes.demo.home.Home"/>
     </session-factory>
 </hibernate-configuration>

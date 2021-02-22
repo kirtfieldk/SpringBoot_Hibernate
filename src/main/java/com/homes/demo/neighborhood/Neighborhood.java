@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Neighborhood {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name="neighborhood_id")
     private int id;
 
     @Column(name="zip")
@@ -42,10 +42,10 @@ public class Neighborhood {
         this.name = name;
     }
 
-    public Neighborhood(@JsonProperty("id") int id,
+    public Neighborhood(
                         @JsonProperty("zip_code") int zipCode,
                         @JsonProperty("name") String name) {
-        this.id = id;
+
         this.zipCode = zipCode;
         this.name = name;
     }

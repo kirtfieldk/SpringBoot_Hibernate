@@ -1,6 +1,7 @@
 package com.homes.demo.school;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.homes.demo.neighborhood.Neighborhood;
 
 import javax.persistence.*;
 
@@ -10,8 +11,12 @@ public class School {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name="school_id")
     private int id;
+
+    @OneToOne
+    @JoinColumn(name="neighborhood")
+    private Neighborhood neighborhood;
 
     @Column(name="name")
     private String namel;
@@ -54,14 +59,24 @@ public class School {
         this.address = address;
     }
 
+    public Neighborhood getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(Neighborhood neighborhood) {
+        this.neighborhood = neighborhood;
+    }
+
     public School(@JsonProperty("id") int id,
                   @JsonProperty("name") String namel,
                   @JsonProperty("city") String city,
-                  @JsonProperty("address") String address) {
+                  @JsonProperty("address") String address,
+                  Neighborhood neighborhood) {
 
         this.id = id;
         this.namel = namel;
         this.city = city;
         this.address = address;
+        this.neighborhood=neighborhood;
     }
 }

@@ -1,6 +1,8 @@
 package com.homes.demo.home;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.homes.demo.neighborhood.Neighborhood;
+import com.homes.demo.school.School;
 
 import javax.persistence.*;
 
@@ -9,7 +11,7 @@ import javax.persistence.*;
 public class Home {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name="home_id")
     private int id;
 
     @Column(name="address")
@@ -20,21 +22,22 @@ public class Home {
 
     @Column(name="sqft")
     private int sqFt;
-
-    @Column(name="neghborhood")
-    private int neborhood;
+    @OneToOne
+    @JoinColumn(name="neighborhood")
+    private Neighborhood neborhood;
 
     @Column(name="price")
     private int price;
-    @Column(name="school")
-    private int school;
+    @OneToOne
+    @JoinColumn(name="school")
+    private School school;
     public Home(){}
     public Home(@JsonProperty("id") int id,
                 @JsonProperty("address") String address,
                 @JsonProperty("floors") int floors,
                 @JsonProperty("sq_foot") int sqFt,
-                @JsonProperty("neborhood") int neborhood,
-                @JsonProperty("School") int school,
+                @JsonProperty("neborhood") Neighborhood neborhood,
+                @JsonProperty("School") School school,
                 @JsonProperty("price") int price) {
         this.id = id;
         this.address = address;
@@ -53,11 +56,11 @@ public class Home {
         this.price = price;
     }
 
-    public int getSchool() {
+    public School getSchool() {
         return school;
     }
 
-    public void setSchool(int school) {
+    public void setSchool(School school) {
         this.school = school;
     }
 
@@ -93,11 +96,11 @@ public class Home {
         this.sqFt = sqFt;
     }
 
-    public int getNeborhood() {
+    public Neighborhood getNeborhood() {
         return neborhood;
     }
 
-    public void setNeborhood(int neborhood) {
+    public void setNeborhood(Neighborhood neborhood) {
         this.neborhood = neborhood;
     }
 }
