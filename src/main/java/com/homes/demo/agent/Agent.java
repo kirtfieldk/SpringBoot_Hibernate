@@ -21,10 +21,10 @@ public class Agent {
     private Neighborhood neighborhood;
 
     public Agent(
-             String name,
-             String agency,
-             Neighborhood neighborhood,
-             int id) {
+             @JsonProperty("name") String name,
+             @JsonProperty("agency") String agency,
+             @JsonProperty("neighborhood") Neighborhood neighborhood,
+             @JsonProperty("id") int id) {
         this.name = name;
         this.agency = agency;
         this.id = id;

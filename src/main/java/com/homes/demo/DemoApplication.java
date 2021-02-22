@@ -3,6 +3,7 @@ package com.homes.demo;
 import com.homes.demo.Database.Database;
 import com.homes.demo.home.Home;
 import com.homes.demo.neighborhood.Neighborhood;
+import com.homes.demo.school.School;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -35,6 +36,8 @@ public class DemoApplication {
 //			SpringApplication.run(DemoApplication.class, args);
 			Neighborhood n = new Neighborhood(2222,"Keith");
 			db.addObject(n);
+			School sh = new School("keith","keith","keller",n);
+			db.addObject(sh);
 		}catch(Exception e){
 			System.out.println(e);
 		}

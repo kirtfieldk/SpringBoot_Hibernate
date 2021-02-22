@@ -41,10 +41,15 @@ public class Neighborhood {
     public void setName(String name) {
         this.name = name;
     }
-
+    public Neighborhood(int zipCode, String name){
+        this.zipCode=zipCode;
+        this.name=name;
+    }
     public Neighborhood(
+                        @JsonProperty("id") int id,
                         @JsonProperty("zip_code") int zipCode,
-                        @JsonProperty("name") String name) {
+                        @JsonProperty("name") String name
+    ) {
 
         this.zipCode = zipCode;
         this.name = name;

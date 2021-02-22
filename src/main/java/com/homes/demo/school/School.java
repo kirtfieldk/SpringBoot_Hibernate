@@ -67,6 +67,17 @@ public class School {
         this.neighborhood = neighborhood;
     }
 
+    public School(
+                  String namel,
+                  String city,
+                  String address,
+                  Neighborhood neighborhood) {
+        this.namel = namel;
+        this.city = city;
+        this.address = address;
+        this.neighborhood=neighborhood;
+    }
+
     public School(@JsonProperty("id") int id,
                   @JsonProperty("name") String namel,
                   @JsonProperty("city") String city,
