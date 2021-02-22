@@ -32,7 +32,6 @@ public class DemoApplication {
 				.buildSessionFactory();
 		Database db = new Database(factory);
 		try{
-			System.out.println("Hello");
 //			SpringApplication.run(DemoApplication.class, args);
 			Neighborhood n = new Neighborhood(2222,"Keith");
 			db.addObject(n);
