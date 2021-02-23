@@ -13,6 +13,8 @@ and the Spring server.
 - School -> many to one with Neighborhood
 - Home -> many to one with Neighborhood, School, and Agent
 - Agent 
+
+
 `No home can be listed without and agent`
 `All homes should be in a Neighborhood and school`
 
