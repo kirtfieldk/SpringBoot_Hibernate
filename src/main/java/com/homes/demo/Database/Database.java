@@ -20,6 +20,7 @@ public class Database<T> {
     //Executes a query such that we can use all over application
     public List<T> executeQuery(String stm){
         session = this.factory.getCurrentSession();
+        session.beginTransaction();
         return session.createQuery(stm).getResultList();
     }
     public Object getSingleItem(Class aClass, int id){

@@ -1,6 +1,7 @@
 package com.homes.demo.home;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.homes.demo.agent.Agent;
 import com.homes.demo.neighborhood.Neighborhood;
 import com.homes.demo.school.School;
 
@@ -22,13 +23,18 @@ public class Home {
 
     @Column(name="sqft")
     private int sqFt;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="neighborhood")
     private Neighborhood neborhood;
 
+    @ManyToOne
+    @JoinColumn(name="agent")
+    private Agent agent;
+
+
     @Column(name="price")
     private int price;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="school")
     private School school;
 
@@ -51,6 +57,7 @@ public class Home {
                  Neighborhood neborhood,
                  School school,
                  int price,
+                 Agent agent,
                  String description) {
         this.description = description;
         this.address = address;
@@ -59,12 +66,23 @@ public class Home {
         this.sqFt = sqFt;
         this.price=price;
         this.neborhood = neborhood;
+        this.agent=agent;
     }
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
     public Home(@JsonProperty("id") int id,
                 @JsonProperty("address") String address,
                 @JsonProperty("floors") int floors,
                 @JsonProperty("sq_foot") int sqFt,
-                @JsonProperty("neborhood") Neighborhood neborhood,
+                @JsonProperty("neighborhood") Neighborhood neborhood,
+                @JsonProperty("agent") Agent agent,
                 @JsonProperty("School") School school,
                 @JsonProperty("price") int price,
                 @JsonProperty("description") String description) {
@@ -74,6 +92,7 @@ public class Home {
         this.school=school;
         this.floors = floors;
         this.sqFt = sqFt;
+        this.agent = agent;
         this.price=price;
         this.neborhood = neborhood;
     }

@@ -1,6 +1,7 @@
 package com.homes.demo;
 
 import com.homes.demo.Database.Database;
+import com.homes.demo.agent.Agent;
 import com.homes.demo.home.Home;
 import com.homes.demo.neighborhood.Neighborhood;
 import com.homes.demo.school.School;
@@ -17,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.List;
 
 /*
 	Spring boot application!
@@ -32,10 +34,10 @@ public class DemoApplication {
 		Database db = new Database();
 		try{
 //			SpringApplication.run(DemoApplication.class, args);
-			Neighborhood n = new Neighborhood(2222,"Keith");
-			db.addObject(n);
-			School sh = new School("keith","keith","keller",n);
-			db.addObject(sh);
+			List<School> s =  db.executeQuery("from School");
+			for(School a: s){
+				System.out.println(a.getCity());
+			}
 		}catch(Exception e){
 			System.out.println(e);
 		}

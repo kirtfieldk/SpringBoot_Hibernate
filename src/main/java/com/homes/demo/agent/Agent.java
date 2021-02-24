@@ -19,30 +19,29 @@ public class Agent {
     private String name;
     @Column(name="agency")
     private String agency;
-    @OneToOne
-    @JoinColumn(name="neighborhood")
-    private Neighborhood neighborhood;
+
     @Column(name="username")
     private String username;
     public Agent(
             @JsonProperty("username") String username,
              @JsonProperty("name") String name,
              @JsonProperty("agency") String agency,
-             @JsonProperty("neighborhood") Neighborhood neighborhood,
+
              @JsonProperty("id") int id) {
         this.name = name;
         this.username=username;
         this.agency = agency;
         this.id = id;
-        this.neighborhood = neighborhood;
+
     }
+    public Agent(){}
     public Agent(
-             String username, String name, String agency, Neighborhood neighborhood) {
+             String username, String name, String agency) {
         this.name = name;
         this.username=username;
         this.agency = agency;
         this.id = id;
-        this.neighborhood = neighborhood;
+
     }
     public String getUsername() {
         return username;
@@ -76,11 +75,5 @@ public class Agent {
         this.agency = agency;
     }
 
-    public Neighborhood getNeighborhood() {
-        return neighborhood;
-    }
 
-    public void setNeighborhood(Neighborhood neighborhood) {
-        this.neighborhood = neighborhood;
-    }
 }

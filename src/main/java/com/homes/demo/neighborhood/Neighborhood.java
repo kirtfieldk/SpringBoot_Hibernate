@@ -54,4 +54,5 @@ public class Neighborhood {
         this.zipCode = zipCode;
         this.name = name;
     }
+    public Neighborhood(){}
 }
