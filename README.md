@@ -6,12 +6,17 @@ Postgres database. Uses `Hibernate` Framework.
 
 To start up use cmd `docker-compose up --build` to start up the postgres image
 and the Spring server.
-###Tables
-- Neighborhood
-- School -> one to one with Neighborhood
-- Home -> one to one with Neighborhood, Schoo
-- Agent -> One to One with Home 
 
+
+### Tables
+- Neighborhood
+- School -> many to one with Neighborhood
+- Home -> many to one with Neighborhood, School, and Agent
+- Agent 
+
+
+`No home can be listed without and agent`
+`All homes should be in a Neighborhood and school`
 
 Contains Generic Database Object
 ```java
